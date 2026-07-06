@@ -4,7 +4,7 @@
 
 El proyecto publica unas señales generadas desde el plc, una señal de dientes de sierra y otra senoidal. Para publicar hacia InfluxDB se usa la function TF6420 DatabaBase Server de TwinCAT. Esta funcionalidad permite conectar con bases de datos en modos diferentes. El utilizado en este ejemplo es el modo 'Autolog'. Esto permite seleccionar qué símbolos de plc publicar e idicar el intervalo de publicación.
 
-![image](./capturas/Captura de pantalla 05.png)
+![image](./capturas/Captura_05.png)
 
 ## Requisitos
 
@@ -22,13 +22,26 @@ TF2000 HMI
 
 ## Configurar TF6420 Database
 
+* Proyecto Database
 Se añade a la solución del proyecto de TwinCAT un proyecto TwinCAT Conectivity Database
 
-![image](./capturas/Captura de pantalla 04.png)
+![image](./capturas/Captura_04.png)
 
-![image](./capturas/Captura de pantalla 01.png)
+* Seleccionar target Database
 
-![image](./capturas/Captura de pantalla 00.png)
+Aquí indicamos con la ruta AmsNetId la dirección del plc donde está instalada la función TF6420. Esto es así porque el plc que conecta con la base de datos no tiene porqué ser el mismo que tiene los símbolos a publicar.
+
+* Seleccionar símbolos de plc
+
+Desde el menú TwinCAT>Target Browser se puede seleccionar la ruta hacia el plc y los símbolos a publicar. Puede ser el mismo plc, otro o incluso varios.
+
+* Creación de la tabla
+
+Desde el menú TwinCAT>Database>Query editor se puede testear la conexión hacia la base de datos. También es posible crear la tabla y la estructura necesaria para publicar los datos. En este caso creamos una tabla llamada **Tabla3** con la estructura de la imagen, según los símbolos que vayamos a publicar. 
+
+![image](./capturas/Captura_00.png)
+
+Una vez creada la estructura, desde **DBtable** indicamos los campos de la estructura como se relacionan con los símbolos de plc.
 
 Se puede configurar para que la publicación se haga de manera automática al arrancar el programa de plc o bien controlándolo desde el método Start() del bloque FB_PLCDBAutologEvt. En este ejemplo se hace de esta última manera activando la variable **bAutologStart**.
 
@@ -43,4 +56,4 @@ Es importante indicar en el enlace http la dirección IP del servidor de Grafana
 
 En el programa de plc se usa una llamada cíclica al método Status del bloque FB_PLCDBAutolog para consultar el estado de la conexión. Este método devuelve el número de peticiones y el código de estado de la conexión. Si se pierde la conexión con la base de datos el valor del parámetro hrErrorCode es 16#989103E8.
 
-![image](./capturas/Captura de pantalla 06.png)
+![image](./capturas/Captura_06.png)
