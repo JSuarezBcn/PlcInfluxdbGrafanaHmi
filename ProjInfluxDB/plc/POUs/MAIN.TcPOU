@@ -8,12 +8,13 @@ VAR
 	fbSignalSinus1			: FB_FunctionGenerator;
 	rSignal2				: LREAL;
 	fbDBAutoLog				: FB_PLCDBAutoLogEvt(sNetID:='', tTimeout:=T#5S);
-	bAutoLogStart			: BOOL := TRUE;
+	bAutoLogStart			: BOOL;
 	bErrAutoLog				: BOOL;
 	aAutoLogStatus			: ARRAY [1..1] OF ST_AutoLogGrpStatus;
 	rTrig1					: R_TRIG;
 	fTrig2					: F_TRIG;
-	
+	bRun					: BOOL;
+	bStop					: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -37,26 +38,43 @@ fbSignalSinus1(
 	rSignal:= rSignal2, 
 	bError=> );
 
-
 rTrig1(CLK:=bAutoLogStart, Q=> );
 fTrig2(CLK:=bAutoLogStart, Q=> );
 
+IF _TaskInfo[1].FirstCycle THEN
+	bAutoLogStart := TRUE;  // No se inicializa la variable en la declaracion ya que el bloque trigger no detectaría el cambio
+END_IF
+
+// Se usa la salida trigger para generar el mensaje en el log, que solo necesita 1 ciclo
+// La activacion del autolog con el método Start() tarda unos ciclos, por lo que no se puede ejecutar con la salida .Q del trigger 
 IF rTrig1.Q THEN
 	ADSLOGSTR(msgCtrlMask:= ADSLOG_MSGTYPE_WARN OR ADSLOG_MSGTYPE_LOG, msgFmtStr:= 'Autolog Started %s', strArg:='' );
+	bRun := TRUE;
 END_IF
+
 IF fTrig2.Q THEN
 	ADSLOGSTR(msgCtrlMask:= ADSLOG_MSGTYPE_WARN OR ADSLOG_MSGTYPE_LOG, msgFmtStr:= 'Autolog Stopped %s', strArg:='' );
+	bStop := TRUE;
 END_IF
 
-
-IF bAutoLogStart THEN
+IF bRun THEN
 	IF fbDBAutoLog.Start() THEN
-		aAutoLogStatus[1].hAutoLogGrpID := 3;
-		fbDBAutoLog.Status(tCheckCycle:=T#5S , pError:=ADR(bErrAutoLog) , pAutoLogGrpStatus:=ADR(aAutoLogStatus) , cbAutoLogGrpStatus:=SIZEOF(aAutologStatus) );
-		// Si devuelve aAutoLogStatus[1].hrErrorCode= 16#989103E8 la base de datos InfluxDB está detenida
+		bRun := FALSE;
 	END_IF
-ELSE 
-	fbDBAutoLog.Stop();
+END_IF
+
+// EL método Stop también necesita varios ciclos
+IF bStop THEN
+	IF fbDBAutoLog.Stop() THEN
+		bStop := FALSE;
+	END_IF
+END_IF
+
+// El método de diagnóstico se puede ejecutar cíclicamente
+IF bAutoLogStart THEN
+	aAutoLogStatus[1].hAutoLogGrpID := 3;
+	fbDBAutoLog.Status(tCheckCycle:=T#5S , pError:=ADR(bErrAutoLog) , pAutoLogGrpStatus:=ADR(aAutoLogStatus) , cbAutoLogGrpStatus:=SIZEOF(aAutologStatus) );
+	// Si devuelve aAutoLogStatus[1].hrErrorCode= 16#989103E8 la base de datos InfluxDB está detenida
 END_IF
 
 

@@ -62,3 +62,8 @@ Es importante indicar en el enlace http la dirección IP del servidor de Grafana
 En el programa de plc se usa una llamada cíclica al método Status del bloque FB_PLCDBAutolog para consultar el estado de la conexión. Este método devuelve el número de peticiones y el código de estado de la conexión. Si se pierde la conexión con la base de datos el valor del parámetro hrErrorCode es 16#989103E8.
 
 ![image](./capturas/Captura_06.png)
+
+Desde el menú TwinCAT>Database>Information Log se muestra un histórico de diagnóstico del runtime Database. Aquí se muestra cuando arranca y cualquier incidencia en el funcionamiento
+
+![image](./capturas/Captura_08.png)
+
