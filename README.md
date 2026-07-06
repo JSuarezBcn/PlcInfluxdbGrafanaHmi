@@ -2,7 +2,7 @@
 
 ## Descripción
 
-El proyecto publica unas señales generadas desde el plc, una señal de dientes de sierra y otra senoidal. Para publicar hacia InfluxDB se usa la function TF6420 DatabaBase Server de TwinCAT. Esta funcionalidad permite conectar con bases de datos en modos diferentes. El utilizado en este ejemplo es el modo 'Autolog'. Esto permite seleccionar qué símbolos de plc publicar e idicar el intervalo de publicación.
+El proyecto publica unas señales generadas desde el plc, una señal de dientes de sierra y otra senoidal. Para publicar hacia InfluxDB se usa la function TF6420 DatabaBase Server de TwinCAT. Esta funcionalidad permite conectar con bases de datos en modos diferentes. El utilizado en este ejemplo es el modo 'Autolog'. Esto permite seleccionar qué símbolos de plc publicar e indicar el intervalo de publicación.
 
 ![image](./capturas/Captura_05.png)
 
@@ -23,9 +23,14 @@ TF2000 HMI
 ## Configurar TF6420 Database
 
 * Proyecto Database
+
 Se añade a la solución del proyecto de TwinCAT un proyecto TwinCAT Conectivity Database
 
 ![image](./capturas/Captura_04.png)
+
+Aquí en este punto agregamos un elemento Autolog. Es aquí donde se configuran los símbolos de qué plc a publicar, si se envian de manera cíclica o al cambiar y el buffer de envío si se pierde la conexión con el plc.
+
+![image](./capturas/Captura_07.png)
 
 * Seleccionar target Database
 
