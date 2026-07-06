@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <DUT Name="ST_Signals" Id="{95451f05-13c1-45b3-8a34-da3612fda24e}">
+    <Declaration><![CDATA[TYPE ST_Signals :
+STRUCT
+    {attribute 'TagName' := 'ID'}
+    signal : STRING(255);
+    
+    {attribute 'FieldName' := 'Value'}
+    value : LREAL := -1;
+	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

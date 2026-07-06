@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Database>
+  <ID>1</ID>
+  <Name>DB</Name>
+  <ServerName>http://10.55.2.56:8086/</ServerName>
+  <DatabaseName>my-bucket1</DatabaseName>
+  <TableName />
+  <Authentication>True</Authentication>
+  <UserID>beckhoff</UserID>
+  <Password>2rqvXunP/YaBd77elIoWQA==</Password>
+  <Driver />
+  <Provider />
+  <Port>0</Port>
+  <Protocol />
+  <Scheme>my-org</Scheme>
+  <Sequence />
+  <SystemDB />
+  <FireBird_ClientDLLPath />
+  <OLDASCIIFormat>False</OLDASCIIFormat>
+  <ASCIISeparator />
+  <DBValueType>NONE</DBValueType>
+  <DBType>InfluxDb2</DBType>
+  <OdbcSubType>Unknown</OdbcSubType>
+  <DriverType>Unknown</DriverType>
+  <Temporary>False</Temporary>
+  <Disabled>False</Disabled>
+  <Description />
+  <FailOverDBID>0</FailOverDBID>
+  <AdditionalParameter />
+  <AuthenticationMechanism>UserNamePassword</AuthenticationMechanism>
+  <SslCa />
+  <SslCertificateFilePath />
+  <SslCertificatePassword />
+  <Token>zP+4IUtQkrSS+k1jh0YDbw==</Token>
+  <ConnectionStringType />
+</Database>

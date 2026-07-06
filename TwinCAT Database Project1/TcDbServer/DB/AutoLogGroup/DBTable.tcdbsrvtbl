@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<Table>
+  <ID>3</ID>
+  <Name>DBTable</Name>
+  <TableName>tabla3</TableName>
+  <FailOverTableName />
+  <TableMode>CUSTOM</TableMode>
+  <AdditionalSettings />
+  <Columns>
+    <Column>
+      <Name>_time</Name>
+      <Type>BigInt</Type>
+      <Mode>UNMAPPED</Mode>
+      <MappedSymbolID>0</MappedSymbolID>
+    </Column>
+    <Column>
+      <Name>Name</Name>
+      <Type>NVarChar</Type>
+      <Mode>SYMALLOCATIONNAME</Mode>
+      <MappedSymbolID>1</MappedSymbolID>
+    </Column>
+    <Column>
+      <Name>Name2</Name>
+      <Type>NVarChar</Type>
+      <Mode>SYMALLOCATIONNAME</Mode>
+      <MappedSymbolID>2</MappedSymbolID>
+    </Column>
+    <Column>
+      <Name>Value</Name>
+      <Type>Float</Type>
+      <Mode>MAPPED</Mode>
+      <MappedSymbolID>1</MappedSymbolID>
+    </Column>
+    <Column>
+      <Name>Value2</Name>
+      <Type>Float</Type>
+      <Mode>MAPPED</Mode>
+      <MappedSymbolID>2</MappedSymbolID>
+    </Column>
+  </Columns>
+</Table>

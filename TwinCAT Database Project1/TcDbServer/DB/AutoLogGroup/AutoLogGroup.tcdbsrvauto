@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AutoLogGroup>
+  <ID>3</ID>
+  <Name>AutoLogGroup</Name>
+  <WriteDirection>DeviceAsSource</WriteDirection>
+  <WriteMode>RINGBUFFER_TIME</WriteMode>
+  <StartMode>Manual</StartMode>
+  <LogMode>onChange</LogMode>
+  <RingBuffParameter>10</RingBuffParameter>
+  <RingBuffParameterUnit>Seconds</RingBuffParameterUnit>
+  <CycleTime>500</CycleTime>
+  <DBID>1</DBID>
+  <DBTableID>3</DBTableID>
+  <FailOverDBTableID>0</FailOverDBTableID>
+  <ADSDevID>1</ADSDevID>
+  <SymbolListID>3</SymbolListID>
+  <Temporary>False</Temporary>
+  <Disabled>False</Disabled>
+</AutoLogGroup>

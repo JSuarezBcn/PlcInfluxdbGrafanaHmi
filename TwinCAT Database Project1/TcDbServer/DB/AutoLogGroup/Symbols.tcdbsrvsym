@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<SymbolList>
+  <ID>3</ID>
+  <Name>Symbols</Name>
+  <Symbols>
+    <Symbol>
+      <ID>1</ID>
+      <Name>MAIN.rSignal1</Name>
+      <AllocationName>rSignal1</AllocationName>
+      <DataType>LREAL</DataType>
+      <BitSize>64</BitSize>
+      <IndexGroup>16448</IndexGroup>
+      <IndexOffset>426400</IndexOffset>
+    </Symbol>
+    <Symbol>
+      <ID>2</ID>
+      <Name>MAIN.rSignal2</Name>
+      <AllocationName>rSignal2</AllocationName>
+      <DataType>LREAL</DataType>
+      <BitSize>64</BitSize>
+      <IndexGroup>16448</IndexGroup>
+      <IndexOffset>426648</IndexOffset>
+    </Symbol>
+  </Symbols>
+</SymbolList>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1">
+  <POU Name="MAIN" Id="{3398a9b0-4584-4222-bb2c-ce921e20f8d4}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	fbSignalSaw				: FB_FunctionGenerator;
+	rSignal1				: LREAL;
+	fbSignalSinus1			: FB_FunctionGenerator;
+	rSignal2				: LREAL;
+	fbDBAutoLog				: FB_PLCDBAutoLogEvt(sNetID:='', tTimeout:=T#5S);
+	bAutoLogStart			: BOOL := TRUE;
+	bErrAutoLog				: BOOL;
+	aAutoLogStatus			: ARRAY [1..1] OF ST_AutoLogGrpStatus;
+	rTrig1					: R_TRIG;
+	fTrig2					: F_TRIG;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbSignalSaw(
+	bEnable:= TRUE, 
+	fFrequency:= 0.2, 
+	fAmplitude:= 10, 
+	fOffset:= 0, 
+	nDutyCycle:= , 
+	eFunction:= E_FunctionType.eSawtooth, 
+	rSignal:= rSignal1, 
+	bError=> );
+	
+fbSignalSinus1(
+	bEnable:= TRUE, 
+	fFrequency:= 0.1, 
+	fAmplitude:= 5, 
+	fOffset:= 0, 
+	nDutyCycle:= , 
+	eFunction:= E_FunctionType.eSine, 
+	rSignal:= rSignal2, 
+	bError=> );
+
+
+rTrig1(CLK:=bAutoLogStart, Q=> );
+fTrig2(CLK:=bAutoLogStart, Q=> );
+
+IF rTrig1.Q THEN
+	ADSLOGSTR(msgCtrlMask:= ADSLOG_MSGTYPE_WARN OR ADSLOG_MSGTYPE_LOG, msgFmtStr:= 'Autolog Started %s', strArg:='' );
+END_IF
+IF fTrig2.Q THEN
+	ADSLOGSTR(msgCtrlMask:= ADSLOG_MSGTYPE_WARN OR ADSLOG_MSGTYPE_LOG, msgFmtStr:= 'Autolog Stopped %s', strArg:='' );
+END_IF
+
+
+IF bAutoLogStart THEN
+	IF fbDBAutoLog.Start() THEN
+		aAutoLogStatus[1].hAutoLogGrpID := 3;
+		fbDBAutoLog.Status(tCheckCycle:=T#5S , pError:=ADR(bErrAutoLog) , pAutoLogGrpStatus:=ADR(aAutoLogStatus) , cbAutoLogGrpStatus:=SIZEOF(aAutologStatus) );
+		// Si devuelve aAutoLogStatus[1].hrErrorCode= 16#989103E8 la base de datos InfluxDB está detenida
+	END_IF
+ELSE 
+	fbDBAutoLog.Stop();
+END_IF
+
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

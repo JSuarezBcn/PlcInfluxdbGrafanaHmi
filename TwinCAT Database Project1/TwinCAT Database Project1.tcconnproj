@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{475aeb5a-ae5e-4146-bf40-0ee92486729f}</ProjectGuid>
+    <AssemblyName>TwinCAT Database Project1</AssemblyName>
+    <Name>TwinCAT Database Project1</Name>
+    <RootNamespace>TwinCAT Database Project1</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="TcDbServer.tcdbsrv">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <tcdbsrvdbCompile Include="TcDbServer\DB\DB.tcdbsrvdb">
+      <DependentUpon>TcDbServer.tcdbsrv</DependentUpon>
+    </tcdbsrvdbCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <tcdbsrvautoCompile Include="TcDbServer\DB\AutoLogGroup\AutoLogGroup.tcdbsrvauto">
+      <DependentUpon>TcDbServer\DB\DB.tcdbsrvdb</DependentUpon>
+    </tcdbsrvautoCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <tcdbsrvadsCompile Include="TcDbServer\DB\AutoLogGroup\AdsDevice.tcdbsrvads">
+      <DependentUpon>TcDbServer\DB\AutoLogGroup\AutoLogGroup.tcdbsrvauto</DependentUpon>
+    </tcdbsrvadsCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <tcdbsrvsymCompile Include="TcDbServer\DB\AutoLogGroup\Symbols.tcdbsrvsym">
+      <DependentUpon>TcDbServer\DB\AutoLogGroup\AutoLogGroup.tcdbsrvauto</DependentUpon>
+    </tcdbsrvsymCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <tcdbsrvtblCompile Include="TcDbServer\DB\AutoLogGroup\DBTable.tcdbsrvtbl">
+      <DependentUpon>TcDbServer\DB\AutoLogGroup\AutoLogGroup.tcdbsrvauto</DependentUpon>
+    </tcdbsrvtblCompile>
+  </ItemGroup>
+  <!-- This next bit is required unless the macro used to Import your targets is defined in an MSBuild toolset. -->
+  <ProjectExtensions>
+    <ProjectCapabilities>
+      <ProjectConfigurationsDeclaredAsItems />
+      <TcConnectivity />
+    </ProjectCapabilities>
+  </ProjectExtensions>
+</Project>
