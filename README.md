@@ -8,17 +8,17 @@ El proyecto publica unas señales generadas desde el plc, una señal de dientes 
 
 ## Requisitos
 
-Testeado con las siguientes versiones:
-TwinCAT 4026.20
-Función TF6420 v34.37.2
-HMI Engineering/Server v14.13.1
-InfluxDB 2 v2.8.0
-Grafana v13.1
+* Testeado con las siguientes versiones:
+  * TwinCAT 4026.20
+  * Función TF6420 v34.37.2
+  * HMI Engineering/Server v14.13.1
+  * InfluxDB 2 v2.8.0
+  * Grafana v13.1
 
-Licencias necesarias (en todas ellas las licencias Trial son válidas):
-TF1200 PLC
-TF6420 Database
-TF2000 HMI
+* Licencias necesarias (en todas ellas las licencias Trial son válidas):
+  * TF1200 PLC
+  * TF6420 Database
+  * TF2000 HMI
 
 ## Configurar TF6420 Database
 
