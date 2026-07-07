@@ -46,7 +46,7 @@ IF _TaskInfo[1].FirstCycle THEN
 END_IF
 
 // Se usa la salida trigger para generar el mensaje en el log, que solo necesita 1 ciclo
-// La activacion del autolog con el método Start() tarda unos ciclos, por lo que no se puede ejecutar con la salida .Q del trigger 
+// La activacion del autolog con el método Start() tarda unos ciclos
 IF rTrig1.Q THEN
 	ADSLOGSTR(msgCtrlMask:= ADSLOG_MSGTYPE_WARN OR ADSLOG_MSGTYPE_LOG, msgFmtStr:= 'Autolog Started %s', strArg:='' );
 	bRun := TRUE;
