@@ -15,6 +15,9 @@ VAR
 	fTrig2					: F_TRIG;
 	bRun					: BOOL;
 	bStop					: BOOL;
+	timerReset				: TON;
+	bErrorInfluxdb			: BOOL;
+	iReconexiones			: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -73,10 +76,28 @@ END_IF
 // El método de diagnóstico se puede ejecutar cíclicamente
 IF bAutoLogStart THEN
 	aAutoLogStatus[1].hAutoLogGrpID := 3;
-	fbDBAutoLog.Status(tCheckCycle:=T#5S , pError:=ADR(bErrAutoLog) , pAutoLogGrpStatus:=ADR(aAutoLogStatus) , cbAutoLogGrpStatus:=SIZEOF(aAutologStatus) );
+	fbDBAutoLog.Status(tCheckCycle:=T#3S , pError:=ADR(bErrAutoLog) , pAutoLogGrpStatus:=ADR(aAutoLogStatus) , cbAutoLogGrpStatus:=SIZEOF(aAutologStatus) );
 	// Si devuelve aAutoLogStatus[1].hrErrorCode= 16#989103E8 la base de datos InfluxDB está detenida
+	IF NOT fbDBAutoLog.bBusy_Status THEN
+		bErrorInfluxdb := aAutoLogStatus[1].bError;
+	END_IF
 END_IF
 
+// En caso de error en la conexion con InfluxDB, resetea la funcion autolog cada 3s y comprueba la conexion 
+IF bErrorInfluxdb THEN
+	bAutoLogStart := FALSE;
+	timerReset(IN:=TRUE , PT:=T#3S);
+	IF timerReset.Q THEN
+		bAutoLogStart := TRUE;
+		IF NOT fbDBAutoLog.bBusy_Status THEN
+			iReconexiones := iReconexiones+1;
+			timerReset(IN:=FALSE);
+			bErrorInfluxdb := aAutoLogStatus[1].bError;
+		END_IF
+	END_IF
+ELSE
+	timerReset(IN:=FALSE);	
+END_IF
 
 
 ]]></ST>
