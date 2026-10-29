@@ -54,6 +54,7 @@ Se puede configurar para que la publicación se haga de manera automática al ar
 
 Para incrustrar una visualización del dashboard de Grafana, en Content de HMI se añade un objeto iFrame. Desde el dashboard de Grafana se puede compartir el dashboard desde el menú Share public. Hay que copiar el texto html dentro del editor html del objeto iFrame del hmi.
 
+![image](./capturas/Captura_09.png)
 
 Es importante indicar en el enlace http la dirección IP del servidor de Grafana, no permite indicar localhost.
 

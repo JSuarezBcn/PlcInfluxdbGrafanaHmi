@@ -2,12 +2,12 @@
 <Database>
   <ID>1</ID>
   <Name>DB</Name>
-  <ServerName>http://10.55.2.56:8086/</ServerName>
+  <ServerName>http://10.55.2.59:8086/</ServerName>
   <DatabaseName>my-bucket1</DatabaseName>
   <TableName />
   <Authentication>True</Authentication>
   <UserID>beckhoff</UserID>
-  <Password>2rqvXunP/YaBd77elIoWQA==</Password>
+  <Password>VERCARvDo1Yfaj2VtfIMtfMi1Wo=</Password>
   <Driver />
   <Provider />
   <Port>0</Port>
@@ -31,6 +31,8 @@
   <SslCa />
   <SslCertificateFilePath />
   <SslCertificatePassword />
-  <Token>zP+4IUtQkrSS+k1jh0YDbw==</Token>
+  <Token>VERCATMAzf2KI4zPZvud4GZatB8=</Token>
   <ConnectionStringType />
+  <Encrypt>True</Encrypt>
+  <TrustServerCertificate>True</TrustServerCertificate>
 </Database>

@@ -4,20 +4,20 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	fbSignalSaw				: FB_FunctionGenerator;
-	rSignal1				: LREAL;
+	rSignal1				: LREAL;		// Señal dientes de sierra generada por plc
 	fbSignalSinus1			: FB_FunctionGenerator;
-	rSignal2				: LREAL;
+	rSignal2				: LREAL;		// Señal senoidal generada por plc
 	fbDBAutoLog				: FB_PLCDBAutoLogEvt(sNetID:='', tTimeout:=T#5S);
 	bAutoLogStart			: BOOL;
 	bErrAutoLog				: BOOL;
-	aAutoLogStatus			: ARRAY [1..1] OF ST_AutoLogGrpStatus;
+	aAutoLogStatus			: ARRAY [1..1] OF ST_AutoLogGrpStatus;		// Estado de la conexion Autolog con la DB
 	rTrig1					: R_TRIG;
 	fTrig2					: F_TRIG;
-	bRun					: BOOL;
-	bStop					: BOOL;
+	bRun					: BOOL;			// Arranca DB Autolog
+	bStop					: BOOL;			// Detiene DB Autolog
 	timerReset				: TON;
-	bErrorInfluxdb			: BOOL;
-	iReconexiones			: INT;
+	bErrorInfluxdb			: BOOL;			// Error en la conexion con la DB
+	iReconexiones			: INT;			// Contador de reintentos de conexion con la DB
 END_VAR
 ]]></Declaration>
     <Implementation>

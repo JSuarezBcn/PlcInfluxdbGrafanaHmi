@@ -1,5 +1,5 @@
 <div id="Desktop" data-tchmi-type="TcHmi.Controls.System.TcHmiView" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-mode="Content" data-tchmi-min-width="100" data-tchmi-min-width-unit="%" data-tchmi-height-mode="Content" data-tchmi-min-height="100" data-tchmi-min-height-unit="%">
-  <div id="TcHmiIFrame_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiIFrame" data-tchmi-height="550" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="80" data-tchmi-top-unit="px" data-tchmi-src="http://10.55.2.56:3000/public-dashboards/d3cfdd4a93084078bf81ee2d4b5e6dc9" data-tchmi-right="10">
+  <div id="TcHmiIFrame_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiIFrame" data-tchmi-height="550" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="80" data-tchmi-top-unit="px" data-tchmi-src="http://10.55.2.59:3000/public-dashboards/d3cfdd4a93084078bf81ee2d4b5e6dc9" data-tchmi-right="10">
 </div>
 <div id="TcHmiTextblock_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="42" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-text="Adquisición de señales con la función TF6420 Database en modo Autolog" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="439" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="14">
 </div>
@@ -82,4 +82,4 @@
 </div>
 <div id="TcHmiTextblock_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-text="InfluxDB" data-tchmi-top="44" data-tchmi-top-unit="px" data-tchmi-width="45" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-right="20">
 </div>
-</div>
+
